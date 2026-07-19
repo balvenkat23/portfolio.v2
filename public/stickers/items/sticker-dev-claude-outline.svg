@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 112 112">
+  <defs>
+    <filter id="dc" x="-40%" y="-40%" width="180%" height="186%" color-interpolation-filters="sRGB">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="3" result="dl"/>
+      <feGaussianBlur in="dl" stdDeviation="1.5" result="bl"/>
+      <feComponentTransfer in="bl" result="sp"><feFuncA type="linear" slope="9" intercept="-3.2"/></feComponentTransfer>
+      <feOffset in="sp" dx="0" dy="3" result="so"/>
+      <feGaussianBlur in="so" stdDeviation="3" result="sbl"/>
+      <feFlood flood-color="#4a3340" flood-opacity="0.32" result="sfc"/>
+      <feComposite in="sfc" in2="sbl" operator="in" result="sh"/>
+      <feFlood flood-color="#ffffff" result="wfc"/>
+      <feComposite in="wfc" in2="sp" operator="in" result="bd"/>
+      <feMerge>
+        <feMergeNode in="sh"/>
+        <feMergeNode in="bd"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <g filter="url(#dc)">
+    <!-- Claude terminal block -->
+    <rect x="20" y="20" width="72" height="72" rx="20" fill="#191816"/>
+    <!-- Terminal controls -->
+    <circle cx="32" cy="30" r="2.5" fill="#E66C52"/>
+    <circle cx="39" cy="30" r="2.5" fill="#e58e3e"/>
+    <circle cx="46" cy="30" r="2.5" fill="#cc6b49"/>
+    <!-- Monospace text and prompt -->
+    <g transform="translate(30, 42)">
+      <text x="0" y="32" font-family="Courier New, Monaco, monospace" font-size="28" font-weight="900" fill="#f7f0e8">&gt;c</text>
+      <!-- Cursor -->
+      <rect x="42" y="10" width="12" height="24" fill="#E66C52"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,610 @@
+@import url('https://fonts.googleapis.com/css2?family=Cause:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@1,600&display=swap');
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #0b0e0d;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Redefine blush variables to replace the pink accent with a premium dark pastel teal/slate */
+.deskfolio {
+  --df-blush: #b9d8df !important;
+  /* Soft pastel ice blue/teal */
+  --df-blush-deep: #437d8a !important;
+  /* Dark pastel teal/slate */
+  --df-sel: rgba(185, 216, 223, 0.45) !important;
+  --df-font-round: "Cause", ui-rounded, "Segoe UI", system-ui, sans-serif !important;
+}
+
+/* Center page-deskfolio vertically and horizontally with a 24px padding border frame */
+.page-deskfolio {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 24px !important;
+  /* Guaranteed 24px black frame margin on all 4 sides */
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+/* Section wrapper of the stage must fill the container to prevent stages from collapsing to default min sizes */
+.deskfolio-live {
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Make chalkboard fill the screen minus the 24px padding, removing any extra aspect ratio black gaps */
+.demo-stage.deskfolio-demo-stage {
+  width: 100% !important;
+  height: 100% !important;
+  transform: none !important;
+  margin: 0 !important;
+  left: auto !important;
+  top: auto !important;
+  border-radius: 20px !important;
+  padding: 3% !important;
+  /* Internal padding for elements inside the board */
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  /* Center the book vertically */
+  align-items: center !important;
+  /* Center the book horizontally */
+}
+
+/* Remove page content padding on hard covers (front cover / back cover) to make them full bleed */
+.deskfolio-face--hard .deskfolio-page-content {
+  padding: 0 !important;
+}
+
+/* Reduce cover label card width to fit within cover bounds and not overlap strap */
+.df-cover-label {
+  width: 50% !important;
+}
+
+/* Asymmetric page content padding on paper pages to protect text from center spine fold:
+   - Outer/top/bottom edges get 24px padding
+   - Inner spine edges (right of left page, left of right page) get 12% padding to stay clear of the crease shadow */
+.deskfolio-face--paper.deskfolio-face--back .deskfolio-page-content {
+  padding: 24px 24px 24px 24px !important;
+}
+
+.deskfolio-face--paper.deskfolio-face--front .deskfolio-page-content {
+  padding: 24px 24px 24px 24px !important;
+}
+
+/* Ensure border-box sizing is strictly applied to the page content and all children
+   to keep text wrapping within visible page boundaries without clipping or overflowing */
+.deskfolio-page-content,
+.deskfolio-page-content * {
+  box-sizing: border-box !important;
+}
+
+/* Reduce gap between elements inside the book pages to prevent vertical overflow */
+.df-page {
+  gap: 0.4rem !important;
+}
+
+/* Align hint container items vertically on the left side, positioned with 30px left shift and 90px upward shift, behind the book */
+.df-lamp-hint {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  /* Align text rows to the left */
+  position: absolute !important;
+  top: calc(7% + clamp(72px, 17.2vw, 246px) * 0.46 - 90px) !important;
+  /* Shifted up by 90px total */
+  right: calc(8% + 30px) !important;
+  /* Shifted left by exactly 30px */
+  width: max-content !important;
+  white-space: pre-line !important;
+  overflow: visible !important;
+  z-index: 0 !important;
+  /* Position behind the book when it is open */
+}
+
+/* Designing Experiences That Matter styled in Caveat bold handwriting font in three rows at 80px, left-aligned */
+.df-chalk-header-handwritten {
+  font-family: Caveat, "Segoe Script", Bradley Hand, cursive !important;
+  font-size: 80px !important;
+  font-weight: 700 !important;
+  /* Bold weight imported explicitly from Google Fonts */
+  color: #abc4b2 !important;
+  /* Chalky sage green */
+  text-shadow: 0 0 1px rgba(171, 196, 178, 0.4) !important;
+  /* Subtle glow to emulate thick chalk */
+  letter-spacing: 0 !important;
+  padding-right: 12px !important;
+  /* Add padding to prevent italic glyph cropping */
+  line-height: 0.95 !important;
+  /* Tighter line height for stacked handwriting */
+  text-align: left !important;
+  /* Align text rows to the left */
+  white-space: pre-line !important;
+  opacity: 0.98 !important;
+}
+
+/* Learn and Build hint text placed below the title, left-aligned at 32px, bold weight */
+.df-lamp-hint-text {
+  font-family: Caveat, "Segoe Script", Bradley Hand, cursive !important;
+  font-size: 32px !important;
+  font-weight: 700 !important;
+  /* Bold weight imported explicitly from Google Fonts */
+  color: #abc4b2 !important;
+  /* Same chalky sage green */
+  margin-top: 14px !important;
+  /* Space below 80px header */
+  margin-right: 0 !important;
+  padding-right: 12px !important;
+  /* Add padding to prevent italic glyph cropping */
+  line-height: 1.1 !important;
+  text-align: left !important;
+  /* Align text to the left */
+  opacity: 0.88 !important;
+}
+
+/* Reduce the font size of Cause body font elements by exactly 2px */
+.deskfolio .df-edit--body {
+  font-size: calc(1.02rem - 2px) !important;
+}
+
+.deskfolio .df-tag {
+  font-size: calc(0.86rem - 2px) !important;
+}
+
+.deskfolio .df-role {
+  font-size: calc(0.88rem - 2px) !important;
+}
+
+.deskfolio .df-date {
+  font-size: calc(0.82rem - 2px) !important;
+}
+
+.deskfolio .df-link {
+  font-size: calc(0.92rem - 2px) !important;
+}
+
+.deskfolio .df-proj-desc {
+  font-size: calc(0.96rem - 2px) !important;
+}
+
+.deskfolio .df-check .df-edit {
+  font-size: calc(0.94rem - 2px) !important;
+}
+
+.deskfolio .df-xp-role {
+  font-size: calc(0.98rem - 2px) !important;
+}
+
+.deskfolio .df-xp-meta {
+  font-size: calc(0.82rem - 2px) !important;
+}
+
+/* 2-column grid layout for project cards:
+   - Left column: The square banner image
+   - Right column: The title (heading + badge) and description text */
+.deskfolio .df-proj {
+  display: grid !important;
+  grid-template-columns: 110px 1fr !important;
+  grid-template-rows: auto auto !important;
+  gap: 2px 12px !important;
+  align-items: start !important;
+  margin-bottom: 1.2rem !important;
+}
+
+.deskfolio .df-proj-banner {
+  grid-column: 1 !important;
+  grid-row: 1 / span 2 !important;
+  width: 110px !important;
+  height: 110px !important;
+  object-fit: cover !important;
+  border-radius: 0px !important;
+  margin: 0 !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08) !important;
+  border: none !important;
+}
+
+.deskfolio .df-proj-head {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: baseline !important;
+  justify-content: space-between !important;
+}
+
+.deskfolio .df-proj-desc {
+  grid-column: 2 !important;
+  grid-row: 2 !important;
+  margin: 0 !important;
+}
+
+/* Styling for single case study layout (1 project per page) with a much larger image banner */
+.deskfolio .df-proj--single {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  margin-bottom: 0 !important;
+}
+
+.deskfolio .df-proj--single .df-proj-banner--large {
+  width: 100% !important;
+  height: 180px !important;
+  object-fit: cover !important;
+  border-radius: 0px !important;
+  margin: 0 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12) !important;
+  border: none !important;
+  grid-column: auto !important;
+  grid-row: auto !important;
+}
+
+.deskfolio .df-proj--single .df-proj-head {
+  display: flex !important;
+  align-items: baseline !important;
+  justify-content: space-between !important;
+  grid-column: auto !important;
+  grid-row: auto !important;
+}
+
+.deskfolio .df-proj--single .df-proj-desc {
+  grid-column: auto !important;
+  grid-row: auto !important;
+  line-height: 1.6 !important;
+}
+
+/* Align project items vertically on pages that do not have the h3 section header */
+.deskfolio .df-page--no-header .df-proj--single {
+  margin-top: 3.1rem !important;
+}
+
+/* Add vertical gap between adjacent sections/cards in the notebook pages */
+.deskfolio .df-card+.df-card {
+  margin-top: 1.8rem !important;
+}
+
+/* Clickable project banner image link wrapper style */
+.deskfolio .df-proj-banner-link {
+  display: block !important;
+  width: 100% !important;
+  text-decoration: none !important;
+  outline: none !important;
+}
+
+/* Ensure signature and external Behance links sit on top of the page turn corner (z-index 3) to remain fully clickable */
+.deskfolio .df-sig {
+  position: relative !important;
+  z-index: 5 !important;
+  pointer-events: auto !important;
+}
+
+/* Detailed Experience Section layout styles */
+.deskfolio .df-xp-card {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.6rem !important;
+  width: 100% !important;
+  margin-top: 0.2rem !important;
+}
+
+.deskfolio .df-xp-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+.deskfolio .df-xp-title {
+  font-family: var(--df-font-round) !important;
+  font-weight: 700 !important;
+  font-size: calc(1.3rem - 2px) !important;
+  color: var(--df-ink) !important;
+}
+
+.deskfolio .df-xp-date-badge {
+  font-size: calc(0.82rem - 2px) !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  color: var(--df-blush-deep) !important;
+  background: color-mix(in srgb, var(--df-blush) 18%, var(--df-paper)) !important;
+  padding: 0.2rem 0.65rem !important;
+  border-radius: 999px !important;
+}
+
+.deskfolio .df-xp-company {
+  font-weight: 700 !important;
+  font-size: calc(0.94rem - 2px) !important;
+  color: var(--df-blush-deep) !important;
+  margin: -0.3rem 0 0 !important;
+}
+
+.deskfolio .df-xp-desc {
+  font-size: calc(0.96rem - 2px) !important;
+  line-height: 1.6 !important;
+  margin: 0 !important;
+}
+
+.deskfolio .df-xp-stats {
+  display: flex !important;
+  gap: 1.6rem !important;
+  margin: 0.4rem 0 !important;
+}
+
+.deskfolio .df-xp-stat {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+}
+
+.deskfolio .df-xp-stat-num {
+  font-family: var(--df-font-round) !important;
+  font-weight: 700 !important;
+  font-size: calc(2.0rem - 2px) !important;
+  color: var(--df-blush-deep) !important;
+  line-height: 1 !important;
+}
+
+.deskfolio .df-xp-stat-lbl {
+  font-size: calc(0.74rem - 2px) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  color: var(--df-ink-soft) !important;
+  font-weight: 700 !important;
+}
+
+/* Contact page card styling */
+.deskfolio .df-contact-cards {
+  display: flex !important;
+  gap: 1.2rem !important;
+  margin-top: 1.5rem !important;
+  width: 100% !important;
+  justify-content: center !important;
+}
+
+.deskfolio .df-contact-card {
+  position: relative !important;
+  flex: 1 !important;
+  max-width: 170px !important;
+  aspect-ratio: 1 / 1.15 !important;
+  padding: 1.2rem 0.8rem 0.8rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-decoration: none !important;
+  border-radius: 8px !important;
+  box-shadow: 0 8px 16px -8px rgba(107, 90, 87, 0.3),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.4) !important;
+  transition: transform 0.24s cubic-bezier(0.34, 1.6, 0.6, 1),
+    box-shadow 0.24s ease !important;
+  cursor: pointer !important;
+}
+
+/* Tilted paper effect */
+.deskfolio .df-contact-card--linkedin {
+  background: #e1d8f5 !important;
+  /* Soft lilac note */
+  color: #554475 !important;
+  transform: rotate(-3.5deg) !important;
+}
+
+.deskfolio .df-contact-card--email {
+  background: #fdf2d0 !important;
+  /* Soft butter note */
+  color: #705b29 !important;
+  transform: rotate(3deg) !important;
+}
+
+/* Interactive pushpins on top of notes */
+.deskfolio .df-contact-pin {
+  position: absolute !important;
+  top: -6px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 12px !important;
+  height: 12px !important;
+  border-radius: 50% !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) !important;
+}
+
+.deskfolio .df-contact-card--linkedin .df-contact-pin {
+  background: #a98fd8 !important;
+  /* Lilac pin */
+  border: 2px solid #fffdfa !important;
+}
+
+.deskfolio .df-contact-card--email .df-contact-pin {
+  background: #e985a8 !important;
+  /* Pink/blush pin */
+  border: 2px solid #fffdfa !important;
+}
+
+/* Card Icons */
+.deskfolio .df-contact-icon {
+  width: 24px !important;
+  height: 24px !important;
+  margin-bottom: 0.6rem !important;
+  opacity: 0.85 !important;
+}
+
+/* Card Labels */
+.deskfolio .df-contact-label {
+  font-family: var(--df-font-round) !important;
+  font-weight: 700 !important;
+  font-size: calc(0.92rem - 2px) !important;
+  text-align: center !important;
+  letter-spacing: 0.02em !important;
+}
+
+.deskfolio .df-contact-sub {
+  font-family: var(--df-font-hand) !important;
+  font-weight: 600 !important;
+  font-size: 1.25rem !important;
+  margin-top: 0.2rem !important;
+  text-align: center !important;
+  opacity: 0.9 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-width: 100% !important;
+}
+
+/* Mobile responsive query (max-width: 760px) to adjust custom components */
+@media (max-width: 760px) {
+  /* Reduce top offset on headerless pages to fit mobile bounds */
+  .deskfolio .df-page--no-header .df-proj--single {
+    margin-top: 1.2rem !important;
+  }
+
+  /* Scale down project banner heights so they fit page heights on mobile */
+  .deskfolio .df-proj--single .df-proj-banner--large {
+    height: 130px !important;
+  }
+
+  /* Optimize project text sizes for mobile screen layouts */
+  .deskfolio .df-proj-desc {
+    font-size: calc(0.92rem - 2px) !important;
+    line-height: 1.45 !important;
+  }
+
+  /* Adjust experience stats to prevent horizontal/vertical page clipping */
+  .deskfolio .df-xp-stats {
+    gap: 0.8rem !important;
+    margin: 0.3rem 0 !important;
+  }
+
+  .deskfolio .df-xp-stat-num {
+    font-size: calc(1.65rem - 2px) !important;
+  }
+
+  .deskfolio .df-xp-stat-lbl {
+    font-size: calc(0.68rem - 2px) !important;
+  }
+
+  /* Tighten spacing on contact page Post-it cards */
+  .deskfolio .df-contact-cards {
+    gap: 0.8rem !important;
+    margin-top: 0.8rem !important;
+  }
+
+  .deskfolio .df-contact-card {
+    padding: 0.8rem 0.5rem 0.5rem !important;
+  }
+
+  .deskfolio .df-contact-sub {
+    font-size: 1.05rem !important;
+  }
+
+  /* Scale down doodles slightly on mobile pages to prevent text overlapping */
+  .deskfolio .df-doodle {
+    transform: scale(0.75) !important;
+  }
+
+  .df-chalk-header-handwritten {
+    font-size: 48px !important;
+  }
+}
+
+/* Mobile Warning Popup styles */
+.df-mobile-warning-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: rgba(18, 28, 24, 0.6) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  display: grid !important;
+  place-items: center !important;
+  padding: 1.5rem !important;
+  z-index: 99999 !important; /* Topmost overlay */
+}
+
+.df-mobile-warning-card {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 260px !important;
+  background: #e6f7ff !important; /* Pastel sky blue */
+  border-radius: 12px !important;
+  padding: 2.2rem 1.4rem 1.6rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.4),
+              inset 0 0 0 1px rgba(255, 255, 255, 0.6) !important;
+  transform: none !important; /* Remove rotation for centered alignment */
+}
+
+.df-warning-pin {
+  position: absolute !important;
+  top: -8px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 16px !important;
+  height: 16px !important;
+  border-radius: 50% !important;
+  background: #e985a8 !important; /* Pink pushpin */
+  border: 3px solid #fff !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+}
+
+.df-warning-title {
+  font-family: var(--df-font-round) !important;
+  font-weight: 700 !important;
+  font-size: 1.25rem !important;
+  color: var(--df-ink) !important;
+  margin: 0 0 0.8rem 0 !important;
+}
+
+.df-warning-text {
+  font-size: 0.88rem !important;
+  line-height: 1.55 !important;
+  color: var(--df-ink-soft) !important;
+  margin: 0 0 1.5rem 0 !important;
+}
+
+.df-warning-btn {
+  width: 100% !important;
+  padding: 0.8rem 1.2rem !important;
+  background: var(--df-paper) !important;
+  color: var(--df-ink) !important;
+  border: 2px solid var(--df-ink) !important;
+  border-radius: 999px !important;
+  font-family: var(--df-font-round) !important;
+  font-weight: 700 !important;
+  font-size: 0.9rem !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 0 var(--df-ink) !important;
+  transform: translateY(-2px) !important;
+  transition: transform 0.1s ease, box-shadow 0.1s ease !important;
+}
+
+.df-warning-btn:active {
+  transform: translateY(2px) !important;
+  box-shadow: 0 0px 0 var(--df-ink) !important;
+}
+
