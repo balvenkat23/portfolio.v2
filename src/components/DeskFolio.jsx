@@ -879,7 +879,7 @@ const dt = [
   ),
   "/stickers/devices/github-ipad.svg",
   // dev-activity iPad shell
-  "/mort-profile.webp"
+  "/images/Photo02.png"
   // about-page avatar
 ], c0 = ["workspace", "journal", "stationery"].map((t) => ve.find((r) => r.id === t)).filter((t) => !!t);
 function s0({ value: t, onChange: r }) {
@@ -2223,7 +2223,7 @@ const A0 = (t) => /* @__PURE__ */ e("svg", { viewBox: "0 0 24 24", fill: "curren
     className: "df-cover-label", children: [
     /* @__PURE__ */ i("span", {
       className: "df-cover-mark", "aria-hidden": "true", children: [
-      /* @__PURE__ */ e("span", { className: "df-cover-mono", children: "BV" }),
+      /* @__PURE__ */ e("img", { src: "/images/Photo02.png", alt: "Balaji V", className: "df-cover-mono", style: { width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center", borderRadius: "inherit" } }),
       /* @__PURE__ */ e("svg", { className: "df-cover-cursor", viewBox: "0 0 24 24", fill: "currentColor", children: /* @__PURE__ */ e("path", { d: "M4.037 4.688a.495.495 0 0 1 .651-.651l16 6.5a.5.5 0 0 1-.063.947l-6.124 1.58a2 2 0 0 0-1.438 1.435l-1.579 6.126a.5.5 0 0 1-.947.063z" }) })
       ]
     }),
@@ -2253,7 +2253,7 @@ const A0 = (t) => /* @__PURE__ */ e("svg", { viewBox: "0 0 24 24", fill: "curren
   }),
     /* @__PURE__ */ i("div", {
     className: "df-about-head", children: [
-      /* @__PURE__ */ e("span", { className: "df-avatar", children: /* @__PURE__ */ e("img", { src: "/images/linkedin-profile.png", alt: "Balaji V", loading: "lazy", decoding: "async" }) }),
+      /* @__PURE__ */ e("span", { className: "df-avatar", children: /* @__PURE__ */ e("img", { src: "/images/Photo02.png", alt: "Balaji V", loading: "lazy", decoding: "async" }) }),
       /* @__PURE__ */ i("div", {
       children: [
         /* @__PURE__ */ e(ue, { className: "df-name", placeholder: "your name", initial: "Balaji V" }),
@@ -2307,8 +2307,10 @@ const A0 = (t) => /* @__PURE__ */ e("svg", { viewBox: "0 0 24 24", fill: "curren
         /* @__PURE__ */ e("li", { className: "df-tag", children: "Figma" }),
         /* @__PURE__ */ e("li", { className: "df-tag", children: "Claude AI" }),
         /* @__PURE__ */ e("li", { className: "df-tag", children: "Affinity" }),
-        /* @__PURE__ */ e("li", { className: "df-tag", children: "Nifty" }),
-        /* @__PURE__ */ e("li", { className: "df-tag", children: "Antigravity" })
+        /* @__PURE__ */ e("li", { className: "df-tag", children: "Nifty - PM" }),
+        /* @__PURE__ */ e("li", { className: "df-tag", children: "Miro" }),
+        /* @__PURE__ */ e("li", { className: "df-tag", children: "Maze" }),
+        /* @__PURE__ */ e("li", { className: "df-tag", children: "Antigravity IDE" })
       ]
     })
     ]
